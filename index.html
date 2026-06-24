@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Android-x86 in v86</title>
+  <style>
+    body { margin: 0; background: #000; }
+    #screen { width: 100vw; height: 100vh; }
+  </style>
+  <script src="v86.js"></script>
+</head>
+<body>
+  <div id="screen"></div>
+
+  <script>
+    new V86({
+      wasm_path: "v86.wasm",
+      memory_size: 512 * 1024 * 1024,
+      vga_memory_size: 8 * 1024 * 1024,
+      screen_container: document.getElementById("screen"),
+      cdrom: { url: "android.iso" },
+      boot_order: 0x132, // CD first
+      autostart: true
+    });
+  </script>
+</body>
+</html>
