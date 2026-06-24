@@ -1,11 +1,15 @@
 FROM ubuntu:22.04
 
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+
 RUN apt update && apt install -y \
     qemu-system-x86 \
     novnc \
     websockify \
     wget \
-    unzip
+    unzip \
+    tzdata
 
 # Make android directory
 RUN mkdir /android
